@@ -7,6 +7,6 @@ require'nvim-tree'.setup {}
 
 
 --vim.api.nvim_create_autocmd(
---  { "ColorScheme" },
+-- { "ColorScheme" },
 --  { pattern = "*", command = "highlight Normal ctermbg=NONE guibg=NONE" }
 --)

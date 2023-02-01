@@ -1,9 +1,7 @@
 return require('packer').startup(function()
     --[[
     --  plugins to consider:
-    --  bufferline (handles tabs and windows)
     --  gitsigns (git plugin)
-    --  Null-LS (formatting with prettier, eslint, etc.)
     --  toggleterm (open terminal programs in neovim)
     --]]
 
@@ -67,16 +65,22 @@ return require('packer').startup(function()
         }
     }
 
-    -- autopairs brackets, parenthesis, etc. (fastwrap is useful)
+    -- null-ls for formatting, linting & more
+    use "jose-elias-alvarez/null-ls.nvim"
+
+    -- autopairs brackets, parenthesis, etc. using treesitter (fastwrap is useful)
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
 
+    -- auto close html tags, uses treesitter
+    use "windwp/nvim-ts-autotag"
+
     -- easy comments
     use "numToStr/Comment.nvim"
 
-    -- comment strings for jsx (curly braces, etc.)
+    -- comment strings for jsx (curly braces, etc.) using treesitter
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- bufferline (adds visual buffer line at the top)

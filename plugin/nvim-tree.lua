@@ -7,6 +7,7 @@ require("nvim-tree").setup({
 		number = true,
 		relativenumber = true,
 		preserve_window_proportions = true,
+		--		width = 40,
 	},
 	renderer = {
 		highlight_git = true,

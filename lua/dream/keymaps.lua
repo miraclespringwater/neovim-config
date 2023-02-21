@@ -67,7 +67,6 @@ keymap("n", "H", ":BufferLineCyclePrev<CR>", opts)
 -- Close current buffer, leave window open
 keymap("n", "<leader>q", ":bp | sp | bn | bd <CR>", opts)
 keymap("n", "<leader>Q", ":bp | sp | bn | bd!<CR>", opts)
-
 -- Insert --
 
 -- Visual --

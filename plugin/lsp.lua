@@ -4,13 +4,13 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
 	"tsserver",
-	"sumneko_lua",
+	"lua_ls",
 	"rust_analyzer",
 	"html",
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -139,3 +139,13 @@ null_ls.setup({
 		-- diagnostics.flake8,
 	},
 })
+
+-- luasnip configuration
+local luasnip_status_ok, luasnip = pcall(require, "luasnip")
+if not null_ls_status_ok then
+	return
+end
+
+--luasnip.filetype_extend("javascript", { "javascriptreact" })
+--luasnip.filetype_extend("javascript", { "html" })
+--luasnip.filetype_extend("javascriptreact", { "javascript" })

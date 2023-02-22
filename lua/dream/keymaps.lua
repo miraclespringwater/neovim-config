@@ -67,6 +67,12 @@ keymap("n", "H", ":BufferLineCyclePrev<CR>", opts)
 -- Close current buffer, leave window open
 keymap("n", "<leader>q", ":bp | sp | bn | bd <CR>", opts)
 keymap("n", "<leader>Q", ":bp | sp | bn | bd!<CR>", opts)
+
+-- Run RestNvim
+keymap("n", "<leader>rr", "<Plug>RestNvim", opts)
+keymap("n", "<leader>r<leader>r", "<Plug>RestNvimLast", opts)
+keymap("n", "<leader>rp", "<Plug>RestNvimPreview", opts)
+
 -- Insert --
 
 -- Visual --

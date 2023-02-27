@@ -2,13 +2,6 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-	"tsserver",
-	"lua_ls",
-	"rust_analyzer",
-	"html",
-})
-
 -- Fix Undefined global 'vim'
 lsp.configure("lua_ls", {
 	settings = {
@@ -44,7 +37,6 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-	--['<M-y>'] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 })
 
@@ -178,13 +170,3 @@ null_ls.setup({
 		-- diagnostics.flake8,
 	},
 })
-
--- luasnip configuration
-local luasnip_status_ok, luasnip = pcall(require, "luasnip")
-if not null_ls_status_ok then
-	return
-end
-
---luasnip.filetype_extend("javascript", { "javascriptreact" })
---luasnip.filetype_extend("javascript", { "html" })
---luasnip.filetype_extend("javascriptreact", { "javascript" })

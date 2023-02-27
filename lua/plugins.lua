@@ -66,6 +66,9 @@ return require("packer").startup(function()
 			{ "L3MON4D3/LuaSnip" }, -- Required
 		},
 	})
+
+	-- mason automatic installer
+	use("WhoIsSethDaniel/mason-tool-installer.nvim")
 	-- null-ls for formatting, linting & more
 	use("jose-elias-alvarez/null-ls.nvim")
 

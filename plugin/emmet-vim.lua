@@ -1,0 +1,2 @@
+--vim.g.user_emmet_leader_key = "<C-e>"
+--vim.g.user_emmet_expandabbr_key = "<Tab>"

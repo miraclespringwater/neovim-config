@@ -20,20 +20,58 @@ lsp.configure("lua_ls", {
 	},
 })
 
+-- Since I have no clue how to manually trigger emmet_ls completion
+-- I have removed the javascriptreact and typescriptreact filetypes
+-- And am opting to use emmet-vim instead, but emmet_ls completion
+-- in the below files is still useful.
+lsp.configure("emmet_ls", {
+	filetypes = { "html", "css", "sass", "scss", "less" },
+})
+
 local cmp = require("cmp")
+local types = require("cmp.types")
+
+local function deprioritize_snippet(entry1, entry2)
+	if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
+		return false
+	end
+	if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
+		return true
+	end
+end
+
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<M-j>"] = cmp.mapping.select_next_item(cmp_select),
-	["<M-k>"] = cmp.mapping.select_prev_item(cmp_select),
+	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 	--['<M-y>'] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 })
 
 cmp_mappings["<Tab>"] = nil
 cmp_mappings["<S-Tab>"] = nil
+-- Remove mapping so emmet can have this mapping
+cmp_mappings["<C-e>"] = nil
 
 lsp.setup_nvim_cmp({
 	mapping = cmp_mappings,
+	sorting = {
+		priority_weight = 2,
+		comparators = {
+			deprioritize_snippet,
+			-- the rest of the comparators are pretty much the defaults
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.scopes,
+			cmp.config.compare.score,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.locality,
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 })
 
 lsp.set_preferences({
@@ -49,6 +87,7 @@ lsp.set_preferences({
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 lsp.on_attach(function(client, bufnr)
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "gd", function()

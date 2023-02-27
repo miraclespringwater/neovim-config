@@ -74,6 +74,8 @@ keymap("n", "<leader>r<leader>r", "<Plug>RestNvimLast", opts)
 keymap("n", "<leader>rp", "<Plug>RestNvimPreview", opts)
 
 -- Insert --
+keymap("i", "<C-e>", "<plug>(emmet-expand-abbr)", { silent = true })
+keymap("i", "<C-'>", "<plug>(emmet-expand-abbr)", { silent = true })
 
 -- Visual --
 -- Stay in indent mode

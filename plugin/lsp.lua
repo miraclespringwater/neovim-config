@@ -100,7 +100,7 @@ lsp.on_attach(function(client, bufnr)
 		-- And use the one provided by Null-LS instead (such as prettier)
 		client.server_capabilities.document_formatting = false
 	end
-	--
+
 	-- Autoformat on save
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -117,7 +117,7 @@ end)
 lsp.setup()
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 })
 
 -- null-s ls configuration
@@ -136,7 +136,7 @@ local formatting = null_ls.builtins.formatting
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.prettier,
+		formatting.prettierd,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		-- formatting.yapf,
 		formatting.stylua,

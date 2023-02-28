@@ -47,6 +47,7 @@ return require("packer").startup(function()
 	-- lsp zero (easy lsp and auto completion)
 	use({
 		"VonHeikemen/lsp-zero.nvim",
+		lazy = true,
 		branch = "v1.x",
 		requires = {
 			-- LSP Support
@@ -64,13 +65,15 @@ return require("packer").startup(function()
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" }, -- Required
+			--{ "rafamadriz/friendly-snippets" }, -- Optional
+			{ "miraclespringwater/friendly-snippets", lazy = true, branch = "msw-custom" },
 		},
 	})
 
 	-- mason automatic installer
-	use("WhoIsSethDaniel/mason-tool-installer.nvim")
+	use({ "WhoIsSethDaniel/mason-tool-installer.nvim", lazy = true })
 	-- null-ls for formatting, linting & more
-	use("jose-elias-alvarez/null-ls.nvim")
+	use({ "jose-elias-alvarez/null-ls.nvim", lazy = true })
 
 	-- autopairs brackets, parenthesis, etc. using treesitter (fastwrap is useful)
 	use({
@@ -87,13 +90,14 @@ return require("packer").startup(function()
 	use("numToStr/Comment.nvim")
 
 	-- comment strings for jsx (curly braces, etc.) using treesitter
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use({ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true })
 
 	-- bufferline (adds visual buffer line at the top)
 	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 
 	use({
 		"rest-nvim/rest.nvim",
+		lazy = true,
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("rest-nvim").setup({
@@ -132,4 +136,6 @@ return require("packer").startup(function()
 			})
 		end,
 	})
+
+	use("caenrique/buffer-term.nvim")
 end)

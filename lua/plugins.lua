@@ -1,7 +1,6 @@
 return require("packer").startup(function()
 	--[[
     --  plugins to consider:
-    --  gitsigns (git plugin)
     --  toggleterm (open terminal programs in neovim)
     --]]
 
@@ -66,7 +65,7 @@ return require("packer").startup(function()
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" }, -- Required
 			--{ "rafamadriz/friendly-snippets" }, -- Optional
-			{ "miraclespringwater/friendly-snippets", lazy = true, branch = "msw-custom" },
+			{ "miraclespringwater/friendly-snippets", lazy = true, branch = "msw-custom" }, -- Optional
 		},
 	})
 
@@ -138,4 +137,6 @@ return require("packer").startup(function()
 	})
 
 	use("caenrique/buffer-term.nvim")
+
+	use("lewis6991/gitsigns.nvim")
 end)

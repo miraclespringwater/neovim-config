@@ -89,10 +89,6 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.signature_help()
 	end, opts)
 
-	-- Command for formatting
-	-- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
-
 	-- Note: Get client name for a specific file type by using :LspInfo
 	-- inside of a buffer with said file type
 	if client.name == "tsserver" or client.name == "html" then

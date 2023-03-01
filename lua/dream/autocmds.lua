@@ -19,7 +19,6 @@ autocmd({ "Filetype" }, {
 	pattern = "*",
 	callback = function()
 		vim.opt.formatoptions = vim.opt.formatoptions - { "o" }
-		vim.opt.formatoptions = vim.opt.formatoptions + { "2" }
 	end,
 })
 

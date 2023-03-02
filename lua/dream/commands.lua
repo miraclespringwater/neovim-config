@@ -1,4 +1,6 @@
 vim.cmd([[ command! Reload execute 'source ~/.config/nvim/init.lua' ]])
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 vim.cmd([[ command! DeleteAllEmpty execute 'g/^$/d ' ]])
-vim.cmd([[ command! ToggleTransparent execute "lua require('dream.functions').toggle_transparency()"]])
+vim.cmd([[ command! TransparentToggle execute "lua require('dream.functions').transparent_toggle()"]])
+vim.cmd([[ command! TransparentOn execute "lua require('dream.functions').transparent_on()"]])
+vim.cmd([[ command! TransparentOff execute "lua require('dream.functions').transparent_off()"]])

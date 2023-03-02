@@ -32,6 +32,7 @@ autocmd({ "BufRead", "BufNewFile", "BufWritePost" }, {
 		vim.opt.linebreak = true
 		vim.opt.wrap = true
 		vim.opt.list = false
+		-- vim.opt.formatoptions = vim.opt.formatoptions + { "t" }
 		local cmp_status_ok, cmp = pcall(require, "cmp")
 		if cmp_status_ok then
 			cmp.setup.buffer({ enabled = false })

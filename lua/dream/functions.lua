@@ -1,6 +1,6 @@
 local M = {}
 
-M["get_bg_color"] = function()
+M.get_bg_color = function()
 	local bg = vim.api.nvim_get_hl_by_name("Normal", true)["background"]
 	if bg == nil then
 		return nil
@@ -9,11 +9,21 @@ M["get_bg_color"] = function()
 	end
 end
 
-M["toggle_transparency"] = function()
-	if M.get_bg_color() == nil then
-		vim.api.nvim_set_hl(0, "Normal", { bg = vim.g.colorscheme_bg })
+M.transparent_on = function()
+	vim.api.nvim_set_hl(0, "Normal", { bg = nil })
+	M.transparent = true
+end
+
+M.transparent_off = function()
+	vim.api.nvim_set_hl(0, "Normal", { bg = vim.g.colorscheme_bg })
+	M.transparent = false
+end
+
+M.transparent_toggle = function()
+	if M.transparent then
+		M.transparent_off()
 	else
-		vim.api.nvim_set_hl(0, "Normal", { bg = nil })
+		M.transparent_on()
 	end
 end
 

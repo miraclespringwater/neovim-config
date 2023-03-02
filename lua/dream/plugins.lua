@@ -12,6 +12,9 @@ return require("packer").startup(function()
 
 	-- colorscheme
 	use("gruvbox-community/gruvbox")
+	--  I like this one but colors just seem off to me.
+	--  Would have to try some overrides.
+	--use("ellisonleao/gruvbox.nvim")
 
 	-- vimwiki
 	use("vimwiki/vimwiki")

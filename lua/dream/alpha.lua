@@ -25,6 +25,8 @@ dashboard.section.header.val = {
 	"        ██                                                                                       ",
 }
 
+dashboard.section.header.opts.hl = "Function"
+
 dashboard.section.buttons.val = {
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("SPC p f", "  Find file", ":lua require('telescope.builtin').find_files()<CR>"),

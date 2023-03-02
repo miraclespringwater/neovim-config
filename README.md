@@ -13,7 +13,7 @@ If you found something useful here, you are lost! <3*
 - [ ] Custom keybinding for each [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) source
 - [ ] Write custom snippets to be used by [luasnip](https://github.com/L3MON4D3/LuaSnip)
       and make them appear in the [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) sources (so I don't have to use 
-      [miraclespringwater/friendlysnippets](https://github.com/miraclespringwater/friendly-snippets/tree/msw-custom)
+      [miraclespringwater/friendlysnippets](https://github.com/miraclespringwater/friendly-snippets/tree/msw-custom))
 - [ ] Implement/configure [which-key.nvim](https://github.com/folke/which-key.nvim)
 - [ ] Implement/configure [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) for coding
 - [ ] Implement/configure [twilight.nvim](https://github.com/folke/twilight.nvim) for coding

@@ -5,7 +5,9 @@ local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ "ColorScheme" }, {
 	pattern = "*",
-	command = "lua vim.g.colorscheme_bg = require('dream.functions').get_bg_color()",
+	callback = function()
+		vim.g.colorscheme_bg = require("dream.functions").get_bg_color()
+	end,
 })
 -- Restore gq (only want for .md files for now)
 autocmd("LspAttach", {

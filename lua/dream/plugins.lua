@@ -77,7 +77,7 @@ return require("packer").startup(function()
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" }, -- Required
 			--{ "rafamadriz/friendly-snippets" }, -- Optional
-			{ "miraclespringwater/friendly-snippets", lazy = true, branch = "msw-custom" }, -- Optional
+			{ "miraclespringwater/friendly-snippets", branch = "msw-custom" }, -- Optional
 		},
 	})
 

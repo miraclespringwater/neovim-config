@@ -1,5 +1,5 @@
 local opts = {
-  noremap = true, --[[silent = true]]
+	noremap = true, --[[silent = true]]
 }
 local term_opts = { silent = true }
 -- Shorten function name
@@ -58,6 +58,8 @@ keymap("n", "<leader>rp", "<Plug>RestNvimPreview", opts)
 -- Enter new line at next character
 keymap("n", "<leader>,<CR>", ":s/,/,\\r/ <CR>i", opts)
 keymap("n", "<leader>}<CR>", ":s/}/\\r/ <CR>i", opts)
+--Select whole document
+keymap("n", "<leader>aa", "ggVG", opts)
 -- Save
 keymap("n", "<C-s>", ":w<CR>", opts)
 

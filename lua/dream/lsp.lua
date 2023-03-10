@@ -1,3 +1,4 @@
+local luasnip = require("luasnip")
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")

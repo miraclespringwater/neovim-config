@@ -15,6 +15,7 @@ return require("packer").startup(function()
 	--  I like this one but colors just seem off to me.
 	--  Would have to try some overrides.
 	--use("ellisonleao/gruvbox.nvim")
+	use("eddyekofo94/gruvbox-flat.nvim")
 
 	-- vimwiki
 	use("vimwiki/vimwiki")

@@ -1,4 +1,4 @@
-vim.cmd([[ command! Reload execute 'source ~/.config/nvim/init.lua' ]])
+vim.cmd([[ command! Reload source ~/.config/nvim/init.lua | echo "Config reloaded!" ]])
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 vim.cmd([[ command! DeleteAllEmpty execute 'g/^$/d ' ]])
 vim.cmd([[ command! TransparentToggle execute "lua require('dream.functions').transparent_toggle()"]])

@@ -17,25 +17,36 @@ autocmd("LspAttach", {
 })
 
 -- Overwrite filetype plugins
-autocmd({ "Filetype" }, {
-	pattern = "*",
-	callback = function()
-		vim.opt.formatoptions = vim.opt.formatoptions - { "o" }
-	end,
-})
+-- autocmd({ "Filetype" }, {
+-- 	pattern = { "markdown", "vimwiki" },
+-- 	callback = function() end,
+-- })
 
 -- For markdown and text files:
 autocmd({ "BufRead", "BufNewFile", "BufWritePost" }, {
 	pattern = { "*.md", "*.txt" },
 	callback = function()
 		vim.opt.textwidth = 80
-		vim.opt.linebreak = true
-		vim.opt.wrap = true
+		vim.opt.linebreak = false
+		vim.opt.wrap = false
 		vim.opt.list = false
-		-- vim.opt.formatoptions = vim.opt.formatoptions + { "t" }
+		vim.opt.sidescrolloff = 0
+		vim.opt.formatoptions:append("tcr")
 		local cmp_status_ok, cmp = pcall(require, "cmp")
 		if cmp_status_ok then
 			cmp.setup.buffer({ enabled = false })
 		end
+	end,
+})
+
+autocmd({ "BufWritePost" }, {
+	pattern = { ".prettierrc" },
+	-- i cannot for the life of me figure out a good way of doing this...
+	callback = function()
+		-- local f = assert(io.popen("echo $(killall -v prettierd)"))
+		-- local result = f:read("*a")
+		-- print(result)
+		-- f:close()
+		vim.cmd([[execute "!echo $(killall -wv prettierd; killall prettierd)" ]])
 	end,
 })

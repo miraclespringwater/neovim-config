@@ -38,8 +38,8 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate errors in quicklist (copen)
-keymap("n", "<M-j>", "<cmd>cprev<CR>zz", opts)
-keymap("n", "<M-k>", "<cmd>cnext<CR>zz", opts)
+keymap("n", "<M-j>", "<cmd>cnext<CR>zz", opts)
+keymap("n", "<M-k>", "<cmd>cprev<CR>zz", opts)
 -- Navigate locations in location list (lopen)
 --keymap("n", "<leader>h", "<cmd>lprev<CR>zz", opts)
 --keymap("n", "<leader>l", "<cmd>lnext<CR>zz", opts)
@@ -52,9 +52,9 @@ keymap("n", "H", ":bprevious<CR>", opts)
 keymap("n", "<leader>q", ":bp | sp | bn | bd <CR>", opts)
 keymap("n", "<leader>Q", ":bp | sp | bn | bd!<CR>", opts)
 -- Run RestNvim
-keymap("n", "<leader>rr", "<Plug>RestNvim", opts)
-keymap("n", "<leader>r<leader>r", "<Plug>RestNvimLast", opts)
-keymap("n", "<leader>rp", "<Plug>RestNvimPreview", opts)
+keymap("n", "<leader>r<leader>r", "<Plug>RestNvim", opts)
+keymap("n", "<leader>r<leader>l", "<Plug>RestNvimLast", opts)
+keymap("n", "<leader>r<leader>p", "<Plug>RestNvimPreview", opts)
 -- Enter new line at next character
 keymap("n", "<leader>,<CR>", ":s/,/,\\r/ <CR>i", opts)
 keymap("n", "<leader>}<CR>", ":s/}/\\r/ <CR>i", opts)
@@ -62,6 +62,8 @@ keymap("n", "<leader>}<CR>", ":s/}/\\r/ <CR>i", opts)
 keymap("n", "<leader>aa", "ggVG", opts)
 -- Save
 keymap("n", "<C-s>", ":w<CR>", opts)
+-- Search (move) to text on same line
+keymap("n", "<leader>/", "/\\%<c-r>=line('.')<cr>l", opts)
 
 ---{{{ INSERT }}}---
 keymap("i", "<C-e>", "<plug>(emmet-expand-abbr)", { silent = true })
@@ -77,11 +79,18 @@ keymap("v", "J", ":m .+1<CR>gv=gv", opts)
 keymap("v", "K", ":m .-2<CR>gv=gv", opts)
 -- Hold on to what was in clipboard
 keymap("v", "p", '"_dP', opts)
+-- Save
+keymap("v", "<C-s>", "<Esc>:w<CR>", opts)
+-- Find and replace selected text
+--keymap("v", "<C-r>", '"hy:s/<C-r>h//gc<left><left><left>', opts) -- confirm with y\n
+keymap("v", "<C-r>", '"hy:%s/<C-r>h//gic<left><left><left><left>', opts)
 
 ---{{{ VISUAL BLOCK }}}---
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv=gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts)
+-- Save
+keymap("x", "<C-s>", "<Esc>:w<CR>", opts)
 
 ---{{{ TERMINAL }}}---
 -- Better terminal navigation
@@ -97,3 +106,7 @@ keymap("n", "<leader>Y", '"+Y', opts)
 -- Deleting (normal and visual mode)
 keymap("n", "<leader>d", '"_d', opts)
 keymap("v", "<leader>d", '"_d', opts)
+
+---{{{ SELECT }}}---
+-- Save
+keymap("s", "<C-s>", "<Esc>:w<CR>", opts)

@@ -16,12 +16,6 @@ autocmd("LspAttach", {
 	end,
 })
 
--- Overwrite filetype plugins
--- autocmd({ "Filetype" }, {
--- 	pattern = { "markdown", "vimwiki" },
--- 	callback = function() end,
--- })
-
 -- For markdown and text files:
 autocmd({ "BufRead", "BufNewFile", "BufWritePost" }, {
 	pattern = { "*.md", "*.txt" },

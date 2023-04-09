@@ -37,6 +37,12 @@ cmp_mappings["<S-Tab>"] = nil
 cmp_mappings["<C-e>"] = nil
 
 lsp.setup_nvim_cmp({
+	sources = {
+		{ name = "path", max_item_count = 10 },
+		{ name = "nvim_lsp", keyword_length = 2, max_item_count = 10 },
+		{ name = "buffer", keyword_length = 3, max_item_count = 10 },
+		{ name = "luasnip", keyword_length = 2, max_item_count = 10 },
+	},
 	mapping = cmp_mappings,
 })
 
@@ -85,6 +91,47 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 	vim.keymap.set("n", "<leader>vrn", function()
 		vim.lsp.buf.rename()
+	end, opts)
+	vim.keymap.set("n", "<leader>frn", function()
+		local source_file, target_file
+
+		-- vim.ui.input({
+		-- 	prompt = "Source : ",
+		-- 	completion = "file",
+		-- 	default = vim.api.nvim_buf_get_name(0),
+		-- }, function(input)
+		-- 	source_file = input
+		-- end)
+		-- vim.ui.input({
+		-- 	prompt = "Target : ",
+		-- 	completion = "file",
+		-- 	default = source_file,
+		-- }, function(input)
+		-- 	target_file = input
+		-- end)
+		source_file = vim.api.nvim_buf_get_name(0)
+		vim.ui.input({
+			prompt = "Rename To: ",
+			completion = "file",
+			default = source_file,
+		}, function(input)
+			target_file = input
+		end)
+
+		local params = {
+			command = "_typescript.applyRenameFile",
+			arguments = {
+				{
+					sourceUri = source_file,
+					targetUri = target_file,
+				},
+			},
+			title = "",
+		}
+
+		vim.lsp.util.rename(source_file, target_file)
+		vim.lsp.buf.execute_command(params)
+		vim.cmd("e " .. target_file)
 	end, opts)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()

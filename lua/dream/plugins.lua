@@ -11,10 +11,10 @@ return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- colorscheme
-	use("gruvbox-community/gruvbox")
+	-- use("gruvbox-community/gruvbox")
 	--  I like this one but colors just seem off to me.
 	--  Would have to try some overrides.
-	--use("ellisonleao/gruvbox.nvim")
+	-- use("ellisonleao/gruvbox.nvim")
 	use("eddyekofo94/gruvbox-flat.nvim")
 
 	-- vimwiki
@@ -136,4 +136,6 @@ return require("packer").startup(function()
 	})
 
 	use("lewis6991/impatient.nvim")
+
+	use("iamcco/markdown-preview.nvim")
 end)

@@ -21,6 +21,7 @@ vim.opt.updatetime = 300 -- faster completion (4000ms default)
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.showtabline = 2 -- always show tabs
 vim.opt.smartindent = true -- make indenting smarter again
+vim.opt.breakindent = true -- make wraps match current indent level
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2 -- insert 2 spaces for a tab

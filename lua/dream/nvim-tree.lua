@@ -21,6 +21,9 @@ require("nvim-tree").setup({
 		open_file = {
 			quit_on_open = true,
 		},
+		change_dir = {
+			global = true,
+		},
 	},
 	filters = {
 		custom = { "node_modules" },

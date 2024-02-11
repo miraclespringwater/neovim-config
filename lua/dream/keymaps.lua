@@ -107,6 +107,7 @@ keymap("n", "<leader>Y", '"+Y', opts)
 keymap("n", "<leader>d", '"_d', opts)
 keymap("v", "<leader>d", '"_d', opts)
 
+-- keymap("n", "<leader>mr", "<cmd>!make && make run", opts)
 ---{{{ SELECT }}}---
 -- Save
 keymap("s", "<C-s>", "<Esc>:w<CR>", opts)

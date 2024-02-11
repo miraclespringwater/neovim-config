@@ -1,7 +1,12 @@
 local autocmd = vim.api.nvim_create_autocmd
+local keymap = vim.api.nvim_set_keymap
+local opts = {
+	noremap = true, --[[silent = true]]
+}
 -- Note:
 -- BufEnter: fired when cursor enters the buffer
 -- BufRead: fired after Vim has read the file into memory
+--
 
 autocmd({ "ColorScheme" }, {
 	pattern = "*",
@@ -42,5 +47,17 @@ autocmd({ "BufWritePost" }, {
 		-- print(result)
 		-- f:close()
 		vim.cmd([[execute "!echo $(killall -wv prettierd; killall prettierd)" ]])
+	end,
+})
+
+autocmd({ "FileType" }, {
+	pattern = "cpp",
+	callback = function()
+		keymap(
+			"n",
+			"<leader>mr",
+			'<cmd>! echo "Compiling..." && time $(make > /dev/null) && echo "Successful. Running..." && time $(make run > /dev/null)<CR>',
+			opts
+		)
 	end,
 })

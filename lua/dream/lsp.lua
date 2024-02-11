@@ -22,6 +22,21 @@ lsp.configure("emmet_ls", {
 	filetypes = { "html", "css", "sass", "scss", "less" },
 })
 
+-- require("mason-lspconfig").setup({
+-- 	ensure_installed = { "clangd" },
+-- 	handlers = {
+-- 		lsp.default_setup,
+-- 		clangd = function()
+-- 			require("lspconfig").clangd.setup({
+-- 				on_attach = function(client, bufnr)
+-- 					client.server_capabilities.signatureHelpProvider = false
+-- 					lsp.on_attach(client, bufnr)
+-- 				end,
+-- 			})
+-- 		end,
+-- 	},
+-- })
+
 local cmp = require("cmp")
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

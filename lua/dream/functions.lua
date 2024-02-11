@@ -27,4 +27,14 @@ M.transparent_toggle = function()
 	end
 end
 
+M.run_command_in_terminal = function(command)
+	if M.terminal_buffer and vim.fn.bufexists(M.terminal_buffer) == 1 then
+		-- If the terminal buffer exists, kill the current job
+		vim.fn.chansend(vim.fn.termopen("exit"), "q\r")
+	else
+		-- If the terminal buffer doesn't exist, open a new one
+		M.terminal_buffer = vim.fn.termopen(command)
+	end
+end
+
 return M

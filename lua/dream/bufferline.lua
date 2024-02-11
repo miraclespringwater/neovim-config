@@ -8,6 +8,7 @@ local opts = {
 }
 vim.api.nvim_set_keymap("n", "L", ":BufferLineCycleNext<CR>", opts)
 vim.api.nvim_set_keymap("n", "H", ":BufferLineCyclePrev<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader><leader>", ":BufferLinePick<CR>", opts)
 
 bufferline.setup({
 	options = {

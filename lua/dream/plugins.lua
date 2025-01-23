@@ -106,7 +106,7 @@ return require("packer").startup(function()
 	use({ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true })
 
 	-- bufferline (adds visual buffer line at the top)
-	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons", lazy = true })
+	use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons", lazy = true })
 
 	-- buffer-term: simple toggalable terminal buffer
 	use({ "caenrique/buffer-term.nvim", lazy = true })

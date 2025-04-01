@@ -88,6 +88,7 @@ return require("packer").startup(function()
 	use({ "jose-elias-alvarez/null-ls.nvim", lazy = true })
 
 	-- autopairs brackets, parenthesis, etc. using treesitter (fastwrap is useful)
+	-- requires nvim cmp
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
@@ -106,13 +107,14 @@ return require("packer").startup(function()
 	use({ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true })
 
 	-- bufferline (adds visual buffer line at the top)
-	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons", lazy = true })
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons", lazy = true })
 
 	-- buffer-term: simple toggalable terminal buffer
-	use({ "caenrique/buffer-term.nvim", lazy = true })
+	-- not going to use anymore, would rather use tmux
+	-- use({ "caenrique/buffer-term.nvim", lazy = true })
 
 	-- gitsigns: display changes in git projects in sign column
-	use({ "lewis6991/gitsigns.nvim", lazy = true })
+	-- use({ "lewis6991/gitsigns.nvim", lazy = true })
 
 	-- vim-illuminate: highlights word under cursor
 	use({ "RRethy/vim-illuminate", lazy = true })
@@ -134,8 +136,8 @@ return require("packer").startup(function()
 		"goolord/alpha-nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },
 	})
-
+	--
 	use("lewis6991/impatient.nvim")
-
+	--
 	use("iamcco/markdown-preview.nvim")
 end)
